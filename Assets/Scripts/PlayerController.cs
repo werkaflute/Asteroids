@@ -131,11 +131,11 @@ public class PlayerController : MonoBehaviour
         // SIDES - UP/DOWN
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            rollDelta = -rotSpeed;
+            rollDelta = rotSpeed;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            rollDelta = rotSpeed;
+            rollDelta = -rotSpeed;
             
         }
     }
