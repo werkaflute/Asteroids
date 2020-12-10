@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float rotSpeed;
 
     public GameObject cannon;
+    public GameObject cam;
 
     private Rigidbody rb;
     private Vector3 targetRotation, thrust;
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
         StayOnScreen();
         //targetRotation = transform.localRotation.eulerAngles + new Vector3(0f, Input.GetAxis("Horizontal") * rotSpeed, 0f);
         //thrust = transform.forward * Input.GetAxis("Vertical") * maxThrust;
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             if(shootCooldown.ResetTimer())
@@ -75,27 +77,57 @@ public class PlayerController : MonoBehaviour
                 EventBroker.CallProjectileShot(cannon);
             }
         }
+
+        // FORWARD
         if(Input.GetKey(KeyCode.W))
         {
-            thrust = transform.forward * maxThrust;
+            thrust = cam.transform.forward * maxThrust;
+            //thrust = cam.transform.localRotation.eulerAngles * maxThrust;
         }
         else if(Input.GetKey(KeyCode.S))
         {
-            thrust = -transform.forward * maxThrust;
+            thrust = -cam.transform.forward * maxThrust;
         }
         else
         {
             thrust = new Vector3(0,0,0);
         }
+
+        // SIDES
+        if (Input.GetKey(KeyCode.A))
+        {
+            targetRotation = transform.localRotation.eulerAngles - new Vector3(0f, rotSpeed, 0f);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            targetRotation = transform.localRotation.eulerAngles + new Vector3(0f, rotSpeed, 0f);
+        }
+
+        // FORWARD - UP/DOWN
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            targetRotation = transform.localRotation.eulerAngles - new Vector3(rotSpeed, 0f, 0f);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            targetRotation = transform.localRotation.eulerAngles + new Vector3(rotSpeed, 0f, 0f);
+        }
+
+        // SIDES - UP/DOWN
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            targetRotation = transform.localRotation.eulerAngles + new Vector3(0f, 0f, rotSpeed);
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            targetRotation = transform.localRotation.eulerAngles - new Vector3(0f, 0f, rotSpeed);
+        }
     }
 
     private void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.LeftArrow))
-        {
-            rb.MoveRotation(Quaternion.Euler(targetRotation));
-        }
         rb.MoveRotation(Quaternion.Euler(targetRotation));
         rb.AddForce(thrust);
+        //rb.AddRelativeForce(thrust);
     }
 }
