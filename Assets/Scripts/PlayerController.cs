@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public float rotSpeed;
 
     public GameObject cannon;
-    public GameObject cam;
 
     private Rigidbody rb;
     private Vector3 targetRotation, thrust;
@@ -24,7 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         shootCooldown = GetComponent<CoolDownSc>();
-        screenHeightUnits = 2*Camera.main.orthographicSize;
+        screenHeightUnits = 2 * Camera.main.orthographicSize;
         screenWidthUnits = screenHeightUnits * Camera.main.aspect;
     }
 
@@ -47,7 +46,7 @@ public class PlayerController : MonoBehaviour
     private void StayOnScreen()
     {
         Vector3 posOnScreen = Camera.main.WorldToScreenPoint(transform.position);
-        if (posOnScreen.y>Screen.height)
+        if (posOnScreen.y > Screen.height)
         {
             transform.position -= new Vector3(0f, 0f, screenHeightUnits);
         }
@@ -72,23 +71,22 @@ public class PlayerController : MonoBehaviour
         //targetRotation = transform.localRotation.eulerAngles + new Vector3(0f, Input.GetAxis("Horizontal") * rotSpeed, 0f);
         //thrust = transform.forward * Input.GetAxis("Vertical") * maxThrust;
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(shootCooldown.ResetTimer())
+            if (shootCooldown.ResetTimer())
             {
                 EventBroker.CallProjectileShot(cannon);
             }
         }
 
         // FORWARD
-        if(Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
-            thrust = cam.transform.forward * maxThrust;
-            //thrust = cam.transform.localRotation.eulerAngles * maxThrust;
+            thrust = transform.forward * maxThrust;
         }
-        else if(Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
         {
-            thrust = -cam.transform.forward * maxThrust;
+            thrust = -transform.forward * maxThrust;
         }
         else
         {
@@ -105,27 +103,27 @@ public class PlayerController : MonoBehaviour
         // SIDES
         if (Input.GetKey(KeyCode.A))
         {
-            
+
             yawDelta = -rotSpeed;
         }
         else if (Input.GetKey(KeyCode.D))
         {
             yawDelta = rotSpeed;
-            
+
         }
 
 
-        
+
         // FORWARD - UP/DOWN
         if (Input.GetKey(KeyCode.UpArrow))
         {
             pitchDelta = -rotSpeed;
-           
+
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
             pitchDelta = rotSpeed;
-         
+
         }
 
         // SIDES - UP/DOWN
@@ -136,7 +134,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             rollDelta = -rotSpeed;
-            
+
         }
     }
 
@@ -144,9 +142,9 @@ public class PlayerController : MonoBehaviour
     {
         //działania na eulerowskich kątach mają dużo ograniczeń - silnik nie wie czy rotacja jest o 361 czy o 1 stopień, też trzeba pamiętać które rotacje są lokalne a które globalne
         //dlatego łatwiej to załatwić kwaternionami - mnożenie obraca o dany kwaternion, więcej wiedzieć nie trzeba tak naprawdę
-        rb.MoveRotation(transform.rotation*Quaternion.Euler(pitchDelta,yawDelta,rollDelta));
+        rb.MoveRotation(transform.rotation * Quaternion.Euler(pitchDelta, yawDelta, rollDelta));
 
-        rb.AddForce((thrust));
+        rb.AddForce(thrust);
         //rb.AddRelativeForce(thrust);
     }
 }
