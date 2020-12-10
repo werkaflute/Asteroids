@@ -17,7 +17,9 @@ public class PlayerController : MonoBehaviour
     private CoolDownSc shootCooldown;
 
     private float screenHeightUnits, screenWidthUnits;
-
+    private float pitchDelta = 0;
+    private float yawDelta = 0;
+    private float rollDelta = 0;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -90,44 +92,61 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            thrust = new Vector3(0,0,0);
+            thrust = Vector3.zero;
         }
+
+        //Rotation
+        //zbieram deltę w kątach na poszczególnych osiach
+
+        pitchDelta = 0;
+        yawDelta = 0;
+        rollDelta = 0;
 
         // SIDES
         if (Input.GetKey(KeyCode.A))
         {
-            targetRotation = transform.localRotation.eulerAngles - new Vector3(0f, rotSpeed, 0f);
+            
+            yawDelta = -rotSpeed;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            targetRotation = transform.localRotation.eulerAngles + new Vector3(0f, rotSpeed, 0f);
+            yawDelta = rotSpeed;
+            
         }
 
+
+        
         // FORWARD - UP/DOWN
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            targetRotation = transform.localRotation.eulerAngles - new Vector3(rotSpeed, 0f, 0f);
+            pitchDelta = -rotSpeed;
+           
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            targetRotation = transform.localRotation.eulerAngles + new Vector3(rotSpeed, 0f, 0f);
+            pitchDelta = rotSpeed;
+         
         }
 
         // SIDES - UP/DOWN
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            targetRotation = transform.localRotation.eulerAngles + new Vector3(0f, 0f, rotSpeed);
+            rollDelta = -rotSpeed;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            targetRotation = transform.localRotation.eulerAngles - new Vector3(0f, 0f, rotSpeed);
+            rollDelta = rotSpeed;
+            
         }
     }
 
     private void FixedUpdate()
     {
-        rb.MoveRotation(Quaternion.Euler(targetRotation));
-        rb.AddForce(thrust);
+        //działania na eulerowskich kątach mają dużo ograniczeń - silnik nie wie czy rotacja jest o 361 czy o 1 stopień, też trzeba pamiętać które rotacje są lokalne a które globalne
+        //dlatego łatwiej to załatwić kwaternionami - mnożenie obraca o dany kwaternion, więcej wiedzieć nie trzeba tak naprawdę
+        rb.MoveRotation(transform.rotation*Quaternion.Euler(pitchDelta,yawDelta,rollDelta));
+
+        rb.AddForce((thrust));
         //rb.AddRelativeForce(thrust);
     }
 }
