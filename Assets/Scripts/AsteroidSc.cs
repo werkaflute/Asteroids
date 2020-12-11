@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class AsteroidSc : MonoBehaviour
 {
-    public float maxRotation = 2f;
-    public float minScale = 0.2f, maxScale = 5f;
+    public float maxRotation = 4f;
+    public float minScale = 0.2f, maxScale = 5f, maxSpawnRange = 500;
 
     private Vector3 rotation;
     private Vector3 velocity;
@@ -33,7 +33,7 @@ public class AsteroidSc : MonoBehaviour
 
     private Vector3 ChoosePosition()
     {
-        return levelManager.player.transform.position + Random.onUnitSphere * 50;
+        return levelManager.player.transform.position + Random.onUnitSphere * maxSpawnRange;
     }
 
     public void SetUp()

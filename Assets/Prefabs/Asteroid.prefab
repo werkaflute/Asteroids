@@ -109,9 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c022a016a9cd6243a083e9fe72efada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRotation: 3
-  minScale: 0.4
-  maxScale: 2
+  maxRotation: 4
+  minScale: 4
+  maxScale: 60
+  maxSpawnRange: 500
 --- !u!54 &4239628665794206141
 Rigidbody:
   m_ObjectHideFlags: 0
