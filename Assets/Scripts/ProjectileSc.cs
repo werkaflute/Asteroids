@@ -15,6 +15,7 @@ public class ProjectileSc : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    // if too far from player, begone // behind the mist
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Boundary"))
