@@ -5,7 +5,6 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public BoundsSc boundsSc;
-    public GameObject player;
     public float projectileSpeed;
     public float minAsteroidSpeed, maxAsteroidSpeed;
     public float asteroidDecentralization;
