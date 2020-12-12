@@ -6,14 +6,12 @@ using UnityEngine;
 
 public class AsteroidSmall : AsteroidSc
 {
-    public float maxRotation = 2f;
-    public float minScale = 0.2f, maxScale = 5f;
-
     private Vector3 rotation;
     private Vector3 velocity;
 
     private Rigidbody rb;
     private LevelManager levelManager;
+    private AsteroidSmallManager asteroidSmallManager;
 
 
     private Vector3 RandRotation()
@@ -50,12 +48,12 @@ public class AsteroidSmall : AsteroidSc
         }
     }
 
-    public void SetUp()
+    public new void SetUp()
     {
-        rb.AddTorque(RandRotation());
+        //rb.AddTorque(RandRotation());
         float scale = Random.Range(minScale, maxScale);
         transform.localScale = new Vector3(scale, scale, scale);
-        transform.position = ChoosePosition();
+        transform.position = new Vector3(0f,0f,0f);
         rb.velocity = ChooseDirection(transform.position) * levelManager.GetRandomAsteroidSpeed();
     }
 
@@ -63,6 +61,7 @@ public class AsteroidSmall : AsteroidSc
     {
         if (gameObject == asteroid)
         {
+            EventBroker.CallAsteroidSmallSpawn();
             gameObject.SetActive(false);
         }
     }

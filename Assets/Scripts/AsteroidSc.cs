@@ -65,7 +65,7 @@ public class AsteroidSc : MonoBehaviour
         if(gameObject == asteroid)
         {
             EventBroker.CallAsteroidSmallSpawn();
-            //gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 

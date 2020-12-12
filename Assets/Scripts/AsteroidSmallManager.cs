@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CoolDownSc))]
-[RequireComponent(typeof(ObjectPool))]
+[RequireComponent(typeof(NewObjectPool))]
 public class AsteroidSmallManager : MonoBehaviour
 {
 
@@ -14,6 +14,7 @@ public class AsteroidSmallManager : MonoBehaviour
 
     private void SpawnAsteroid()
     {
+        newObjectPool.PlaceAndActivate(Vector3.zero);
         newObjectPool.PlaceAndActivate(Vector3.zero);
     }
 
