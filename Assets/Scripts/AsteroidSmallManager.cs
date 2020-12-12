@@ -12,20 +12,20 @@ public class AsteroidSmallManager : MonoBehaviour
 
     private BoundsSc boundsSc;
 
-    private void SpawnAsteroid()
+    private void SpawnAsteroidSmall(Vector3 vector3, Vector3 scale)
     {
-        newObjectPool.PlaceAndActivate(Vector3.zero);
-        newObjectPool.PlaceAndActivate(Vector3.zero);
+        newObjectPool.PlaceAndActivate(vector3, Vector3.zero, scale);
+        newObjectPool.PlaceAndActivate(vector3, Vector3.zero, scale);
     }
 
     private void OnEnable()
     {
-        EventBroker.AsteroidSpawn += SpawnAsteroid;
+        EventBroker.AsteroidSmallSpawn += SpawnAsteroidSmall;
     }
 
     private void OnDisable()
     {
-        EventBroker.AsteroidSpawn -= SpawnAsteroid;
+        EventBroker.AsteroidSmallSpawn -= SpawnAsteroidSmall;
     }
 
     void Start()
@@ -37,9 +37,6 @@ public class AsteroidSmallManager : MonoBehaviour
 
     void Update()
     {
-        if (spawnCooldown.ResetTimer())
-        {
-            EventBroker.CallAsteroidSmallSpawn();
-        }
+       
     }
 }

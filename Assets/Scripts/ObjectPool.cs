@@ -8,7 +8,7 @@ public class ObjectPool : MonoBehaviour
     public GameObject objectPrefab;
     public int amountToPool;
 
-    private GameObject GetPooledObject()
+    protected virtual GameObject GetPooledObject()
     {
         foreach(GameObject o in pooledObjects)
         {

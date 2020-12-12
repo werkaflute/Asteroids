@@ -12,12 +12,12 @@ public class AsteroidSc : MonoBehaviour
     private Vector3 rotation;
     private Vector3 velocity;
 
-    private Rigidbody rb;
-    private LevelManager levelManager;
+    protected Rigidbody rb;
+    protected LevelManager levelManager;
     private AsteroidManagerSc asteroidManagerSc;
 
 
-    private Vector3 RandRotation()
+    protected Vector3 RandRotation()
     {
         float x = Random.Range(-maxRotation, maxRotation);
         float y = Random.Range(-maxRotation, maxRotation);
@@ -25,7 +25,7 @@ public class AsteroidSc : MonoBehaviour
         return new Vector3(x, y, z);
     }
 
-    private Vector3 ChooseDirection(Vector3 from)
+    protected Vector3 ChooseDirection(Vector3 from)
     {
         Vector2 randPoint = Random.insideUnitCircle * levelManager.boundsSc.ySize * levelManager.asteroidDecentralization;
         Vector3 target = new Vector3(randPoint.x, 0f, randPoint.y);
@@ -51,7 +51,7 @@ public class AsteroidSc : MonoBehaviour
         }
     }
 
-    public void SetUp()
+    public virtual void SetUp()
     {
         rb.AddTorque(RandRotation());
         float scale = Random.Range(minScale, maxScale);
@@ -64,7 +64,7 @@ public class AsteroidSc : MonoBehaviour
     {
         if(gameObject == asteroid)
         {
-            EventBroker.CallAsteroidSmallSpawn();
+            EventBroker.CallAsteroidSmallSpawn(transform.position, transform.localScale);
             gameObject.SetActive(false);
         }
     }

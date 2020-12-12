@@ -2,13 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewObjectPool : MonoBehaviour
+public class NewObjectPool : ObjectPool
 {
-    public List<GameObject> pooledObjects;
-    public GameObject objectPrefab;
-    public int amountToPool;
+    public void PlaceAndActivate(Vector3 pos, Vector3 rot, Vector3 scale)
+    {
+        GameObject chosen = GetPooledObject();
+        if (chosen != null)
+        {
+            chosen.transform.position = pos;
+            chosen.transform.localScale = scale;
+            chosen.transform.rotation = Quaternion.Euler(rot);
+            chosen.SetActive(true);
+        }
+    }
 
-    private GameObject GetPooledObject()
+    protected override GameObject GetPooledObject()
     {
         foreach (GameObject o in pooledObjects)
         {
@@ -17,39 +25,9 @@ public class NewObjectPool : MonoBehaviour
                 return o;
             }
         }
-        return null;
-    }
-
-    public void PlaceAndActivate(Vector3 pos)
-    {
-        GameObject chosen = GetPooledObject();
-        if (chosen != null)
-        {
-            chosen.transform.position = pos;
-            chosen.SetActive(true);
-        }
-    }
-
-    public void PlaceAndActivate(Vector3 pos, Vector3 rot)
-    {
-        GameObject chosen = GetPooledObject();
-        if (chosen != null)
-        {
-            chosen.transform.position = pos;
-            chosen.transform.rotation = Quaternion.Euler(rot);
-            chosen.SetActive(true);
-        }
-    }
-
-    private void Start()
-    {
-        pooledObjects = new List<GameObject>();
-        GameObject tmp;
-        for (int i = 0; i < amountToPool; i++)
-        {
-            tmp = Instantiate(objectPrefab, this.transform);
-            tmp.SetActive(false);
-            pooledObjects.Add(tmp);
-        }
+        var tmp = Instantiate(objectPrefab, this.transform);
+        tmp.SetActive(false);
+        pooledObjects.Add(tmp);
+        return tmp;
     }
 }

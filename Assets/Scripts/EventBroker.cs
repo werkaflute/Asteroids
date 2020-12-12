@@ -5,7 +5,7 @@ public class EventBroker
 {
     public static event Action<GameObject> ProjectileShoot;
     public static event Action AsteroidSpawn;
-    public static event Action AsteroidSmallSpawn;
+    public static event Action<Vector3, Vector3> AsteroidSmallSpawn;
     public static event Action PlayerKilled;
     public static event Action<GameObject> AsteroidShot;
 
@@ -19,9 +19,9 @@ public class EventBroker
         AsteroidSpawn?.Invoke();
     }
 
-    public static void CallAsteroidSmallSpawn()
+    public static void CallAsteroidSmallSpawn(Vector3 vector3, Vector3 scale)
     {
-        AsteroidSmallSpawn?.Invoke();
+        AsteroidSmallSpawn?.Invoke(vector3, scale);
     }
 
     public static void CallAsteroidShot(GameObject asteroid)
