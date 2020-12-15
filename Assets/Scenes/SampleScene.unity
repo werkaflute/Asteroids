@@ -1172,7 +1172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a0e593e2fe08f24c8cc7b39e9c5fa77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedRaisingDifficulty: 0
+  speedRaisingDifficulty: 5
   player: {fileID: 2143639036}
   textScore: {fileID: 2048218630}
   credits: {fileID: 609426531}

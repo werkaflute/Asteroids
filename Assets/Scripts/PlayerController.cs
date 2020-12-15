@@ -70,10 +70,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // nwm czy to potrzebne 
         StayOnScreen();
-        //targetRotation = transform.localRotation.eulerAngles + new Vector3(0f, Input.GetAxis("Horizontal") * rotSpeed, 0f);
-        //thrust = transform.forward * Input.GetAxis("Vertical") * maxThrust;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -155,6 +152,5 @@ public class PlayerController : MonoBehaviour
         rb.MoveRotation(transform.rotation * Quaternion.Euler(pitchDelta, yawDelta, rollDelta));
 
         rb.AddForce(thrust);
-        //rb.AddRelativeForce(thrust);
     }
 }

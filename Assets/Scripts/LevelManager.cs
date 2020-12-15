@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
@@ -17,10 +18,7 @@ public class LevelManager : MonoBehaviour
     public float asteroidDecentralization;
     private int score = 0;
     private int speedRaiser = 5;
-    private bool gameHasEnded = false;
-
-    public BoundsSc boundsSc;
-   
+    private bool gameHasEnded = false;   
 
     public float GetRandomAsteroidSpeed()
     {
@@ -41,7 +39,6 @@ public class LevelManager : MonoBehaviour
             speedRaiser = 0;
             minAsteroidSpeed += speedRaisingDifficulty;
             maxAsteroidSpeed += speedRaisingDifficulty;
-            Debug.Log("maxAsteroidSpeed: " + maxAsteroidSpeed);
         }
 
         if ((gameHasEnded) && Input.GetKey(KeyCode.Return))
@@ -73,13 +70,11 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        boundsSc = FindObjectOfType<BoundsSc>();
         InvokeRepeating("AddScore", 0, 1);
     }
 
     private void FixedUpdate()
     {
-        //score++;
         textScore.text = "Score: " + score;
     }
 }

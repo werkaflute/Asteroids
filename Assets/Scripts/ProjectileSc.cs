@@ -16,7 +16,6 @@ public class ProjectileSc : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    // if too far from player, begone // behind the mist
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Asteroid"))
@@ -40,7 +39,7 @@ public class ProjectileSc : MonoBehaviour
 
     private void Update()
     {
-        if(Vector3.Distance(this.transform.position, levelManager.player.transform.position) > vanishDistanceFromPlayer)    // this or gameobject?
+        if(Vector3.Distance(this.transform.position, levelManager.player.transform.position) > vanishDistanceFromPlayer)
         {
             gameObject.SetActive(false);
         }
