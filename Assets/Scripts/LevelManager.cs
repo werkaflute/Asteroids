@@ -18,24 +18,16 @@ public class LevelManager : MonoBehaviour
     private int score = 0;
     private int speedRaiser = 5;
     private bool gameHasEnded = false;
-using UnityEngine;
 
-public class LevelManager : MonoBehaviour
-{
     public BoundsSc boundsSc;
-    public float projectileSpeed;
-    public float minAsteroidSpeed, maxAsteroidSpeed;
-    public float asteroidDecentralization;
+   
 
     public float GetRandomAsteroidSpeed()
     {
         return Random.Range(minAsteroidSpeed, maxAsteroidSpeed);
     }
 
-    void Start()
-    {
-        boundsSc = FindObjectOfType<BoundsSc>();
-    }
+  
 
     void Update()
     {
@@ -81,6 +73,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        boundsSc = FindObjectOfType<BoundsSc>();
         InvokeRepeating("AddScore", 0, 1);
     }
 

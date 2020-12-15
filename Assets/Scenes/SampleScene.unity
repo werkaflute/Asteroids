@@ -236,10 +236,6 @@ MonoBehaviour:
   pooledObjects: []
   prefab:
   - {fileID: 2717983078971266242, guid: e20d517b9b5e79143bbc1a05c3998d52, type: 3}
-  - {fileID: 2717983078971266242, guid: e20d517b9b5e79143bbc1a05c3998d52, type: 3}
-  - {fileID: 2717983078971266242, guid: e20d517b9b5e79143bbc1a05c3998d52, type: 3}
-  - {fileID: 2717983078971266242, guid: e20d517b9b5e79143bbc1a05c3998d52, type: 3}
-  - {fileID: 2717983078971266242, guid: e20d517b9b5e79143bbc1a05c3998d52, type: 3}
   amountToPool: 500
 --- !u!114 &96789272
 MonoBehaviour:
@@ -412,6 +408,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160240018}
   m_CullTransparentMesh: 0
+--- !u!1 &392449982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 392449986}
+  - component: {fileID: 392449985}
+  - component: {fileID: 392449984}
+  - component: {fileID: 392449983}
+  m_Layer: 0
+  m_Name: AsteroidManager Small
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &392449983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392449982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e7eaf5713f15545bb1e73f4e398dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &392449984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392449982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3361b09847200e48b2306a01998d4ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  prefab:
+  - {fileID: 4852433103674234945, guid: fe9769e35d33b2a46bb13885906bf424, type: 3}
+  - {fileID: 2275627704883921656, guid: 975770a5fe78aeb49b38c82b5c9f61b4, type: 3}
+  - {fileID: 4862643685285564153, guid: 0763a6319e054c447bf9d086f6e4eb8b, type: 3}
+  - {fileID: 2936318326304509737, guid: 71c2cac73ad99524db3eef9e7d73552e, type: 3}
+  - {fileID: 502578392249019675, guid: 7be5028829ef9934aa5d37013a094cd0, type: 3}
+  amountToPool: 0
+--- !u!114 &392449985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392449982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793b194c03fdb4a498781c9b04d6e901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setTo: 0.0005
+--- !u!4 &392449986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392449982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &604291547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +1172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a0e593e2fe08f24c8cc7b39e9c5fa77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedRaisingDifficulty: 5
+  speedRaisingDifficulty: 0
   player: {fileID: 2143639036}
   textScore: {fileID: 2048218630}
   credits: {fileID: 609426531}
@@ -1108,6 +1182,7 @@ MonoBehaviour:
   minAsteroidSpeed: 10
   maxAsteroidSpeed: 45
   asteroidDecentralization: 800
+  boundsSc: {fileID: 0}
 --- !u!1 &1561541273
 GameObject:
   m_ObjectHideFlags: 3

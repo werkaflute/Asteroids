@@ -9,20 +9,18 @@ public class AsteroidSc : MonoBehaviour
     public float maxRotation = 4f;
     public float minScale = 0.2f, maxScale = 5f, maxSpawnRange = 500;
     public float vanishDistanceFromPlayer;
-    public float maxRotation = 2f;
-    public float minScale = 0.2f, maxScale = 5f;
+    
 
     private Vector3 rotation;
     private Vector3 velocity;
 
-    private Rigidbody rb;
-    private LevelManager levelManager;
+    protected Rigidbody rb;
+    protected LevelManager levelManager;
     private float speedMultiply;
 
 
-    private Vector3 RandRotation()
-    protected Rigidbody rb;
-    protected LevelManager levelManager;
+    
+   
     private AsteroidManagerSc asteroidManagerSc;
 
 
@@ -34,19 +32,19 @@ public class AsteroidSc : MonoBehaviour
         return new Vector3(x, y, z);
     }
 
-    private Vector3 ChooseDirection(Vector3 from)
+    protected Vector3 ChooseDirection(Vector3 from)
     {
         Vector3 randPoint = Random.onUnitSphere * levelManager.asteroidDecentralization;
         Vector3 target = levelManager.player.transform.position + randPoint + levelManager.player.transform.forward * 850;
         return (target - from).normalized;
     }
 
-    private Vector3 ChoosePosition()
+    protected Vector3 ChoosePosition()
     {
         return levelManager.player.transform.position + Random.onUnitSphere * maxSpawnRange * 2 + levelManager.player.transform.forward * 600;
     }
 
-    public void SetUp()
+    public virtual void SetUp()
     {
         rb.AddTorque(RandRotation());
         float scale = Random.Range(minScale, maxScale) * 100;
@@ -67,7 +65,7 @@ public class AsteroidSc : MonoBehaviour
         rb.velocity = ChooseDirection(transform.position)*levelManager.GetRandomAsteroidSpeed()*speedMultiply;
     }
 
-    private void GetShot(GameObject asteroid)
+    protected virtual void GetShot(GameObject asteroid)
     {
         if(gameObject == asteroid)
         {

@@ -25,7 +25,7 @@ public class NewObjectPool : ObjectPool
                 return o;
             }
         }
-        var tmp = Instantiate(objectPrefab, this.transform);
+        var tmp = Instantiate(prefab[Random.Range(0,prefab.Count)], this.transform);
         tmp.SetActive(false);
         pooledObjects.Add(tmp);
         return tmp;

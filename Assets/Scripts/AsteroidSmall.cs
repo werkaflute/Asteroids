@@ -17,4 +17,12 @@ public class AsteroidSmall : AsteroidSc
         rb.velocity = ChooseDirection(transform.position) * levelManager.GetRandomAsteroidSpeed();
     }
 
+     protected override void GetShot(GameObject asteroid)
+    {
+        if (gameObject == asteroid)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
 }

@@ -52,7 +52,7 @@ public class ObjectPool : MonoBehaviour
         int rand;
         for (int i = 0; i < amountToPool; i++)
         {
-            rand = Random.Range(0, 5);
+            rand = Random.Range(0, prefab.Count);
             objectPrefab = prefab[rand];
             tmp = Instantiate(objectPrefab, this.transform);
             tmp.SetActive(false);
