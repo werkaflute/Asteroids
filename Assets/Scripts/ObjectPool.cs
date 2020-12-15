@@ -9,7 +9,10 @@ public class ObjectPool : MonoBehaviour
     private GameObject objectPrefab;
     public int amountToPool;
 
-    private GameObject GetPooledObject()
+    
+   
+
+    protected virtual GameObject GetPooledObject()
     {
         foreach(GameObject o in pooledObjects)
         {
@@ -44,6 +47,7 @@ public class ObjectPool : MonoBehaviour
 
     private void Start()
     {
+        pooledObjects= new List<GameObject>();
         GameObject tmp;
         int rand;
         for (int i = 0; i < amountToPool; i++)

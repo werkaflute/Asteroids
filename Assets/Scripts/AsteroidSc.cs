@@ -9,6 +9,8 @@ public class AsteroidSc : MonoBehaviour
     public float maxRotation = 4f;
     public float minScale = 0.2f, maxScale = 5f, maxSpawnRange = 500;
     public float vanishDistanceFromPlayer;
+    public float maxRotation = 2f;
+    public float minScale = 0.2f, maxScale = 5f;
 
     private Vector3 rotation;
     private Vector3 velocity;
@@ -19,6 +21,12 @@ public class AsteroidSc : MonoBehaviour
 
 
     private Vector3 RandRotation()
+    protected Rigidbody rb;
+    protected LevelManager levelManager;
+    private AsteroidManagerSc asteroidManagerSc;
+
+
+    protected Vector3 RandRotation()
     {
         float x = Random.Range(-maxRotation, maxRotation);
         float y = Random.Range(-maxRotation, maxRotation);
@@ -63,6 +71,7 @@ public class AsteroidSc : MonoBehaviour
     {
         if(gameObject == asteroid)
         {
+            EventBroker.CallAsteroidSmallSpawn(transform.position, transform.localScale);
             gameObject.SetActive(false);
         }
     }
