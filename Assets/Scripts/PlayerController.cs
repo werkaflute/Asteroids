@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private float pitchDelta = 0;
     private float yawDelta = 0;
     private float rollDelta = 0;
+    private int controlsChange = 1;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -82,6 +83,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        // CONTROLS CHANGE
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            controlsChange *= -1;
+        }
+
         // FORWARD
         if (Input.GetKey(KeyCode.W))
         {
@@ -120,12 +127,12 @@ public class PlayerController : MonoBehaviour
         // FORWARD - UP/DOWN
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            pitchDelta = -rotSpeed;
+            pitchDelta = -rotSpeed * controlsChange;
 
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            pitchDelta = rotSpeed;
+            pitchDelta = rotSpeed * controlsChange;
 
         }
 

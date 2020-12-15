@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
     public float minAsteroidSpeed, maxAsteroidSpeed;
     public float asteroidDecentralization;
     private int score = 0;
-    private int speedRaiser = 0;
+    private int speedRaiser = 5;
 
     public float GetRandomAsteroidSpeed()
     {
@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
             speedRaiser = 0;
             minAsteroidSpeed += speedRaisingDifficulty;
             maxAsteroidSpeed += speedRaisingDifficulty;
+            Debug.Log("maxAsteroidSpeed: " + maxAsteroidSpeed);
         }
     }
 

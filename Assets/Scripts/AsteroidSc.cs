@@ -48,7 +48,9 @@ public class AsteroidSc : MonoBehaviour
         else if (scale < maxScale * 100 / 3)
             speedMultiply = 1f;
         else if (scale < maxScale * 100 / 1.5)
-            speedMultiply = 0.6f;
+            speedMultiply = 0.65f;
+        else if (scale < maxScale * 100 * 5 / 6)
+            speedMultiply = 0.4f;
         else
             speedMultiply = 0.2f;
 
