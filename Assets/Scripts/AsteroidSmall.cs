@@ -10,7 +10,7 @@ public class AsteroidSmall : AsteroidSc
     {
         rb.AddTorque(RandRotation());
         transform.localScale *= 0.5f;
-        if(transform.localScale.x < 0.1f)
+        if(transform.localScale.x < 0.2f)
         {
             gameObject.SetActive(false);
         }
