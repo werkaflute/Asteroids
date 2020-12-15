@@ -5,7 +5,8 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public List<GameObject> pooledObjects;
-    public GameObject objectPrefab;
+    public List<GameObject> prefab;
+    private GameObject objectPrefab;
     public int amountToPool;
 
     private GameObject GetPooledObject()
@@ -43,10 +44,12 @@ public class ObjectPool : MonoBehaviour
 
     private void Start()
     {
-        pooledObjects = new List<GameObject>();
         GameObject tmp;
+        int rand;
         for (int i = 0; i < amountToPool; i++)
         {
+            rand = Random.Range(0, 5);
+            objectPrefab = prefab[rand];
             tmp = Instantiate(objectPrefab, this.transform);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);

@@ -10,8 +10,6 @@ public class AsteroidManagerSc : MonoBehaviour
     private CoolDownSc spawnCooldown;
     private ObjectPool asteroidPool;
 
-    private BoundsSc boundsSc;
-
     private void SpawnAsteroid()
     {
         asteroidPool.PlaceAndActivate(Vector3.zero);
@@ -31,7 +29,6 @@ public class AsteroidManagerSc : MonoBehaviour
     {
         spawnCooldown = GetComponent<CoolDownSc>();
         asteroidPool = GetComponent<ObjectPool>();
-        boundsSc = FindObjectOfType<BoundsSc>();
     }
 
     void Update()

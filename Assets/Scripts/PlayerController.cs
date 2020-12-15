@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float rotSpeed;
 
     public GameObject cannon;
+    private LevelManager levelManager;
 
     private Rigidbody rb;
     private Vector3 targetRotation, thrust;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         shootCooldown = GetComponent<CoolDownSc>();
+        levelManager = FindObjectOfType<LevelManager>();
         screenHeightUnits = 2 * Camera.main.orthographicSize;
         screenWidthUnits = screenHeightUnits * Camera.main.aspect;
     }
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.SetActive(false);
         transform.position = Vector3.zero;
+        levelManager.EndGame();
     }
 
     private void OnEnable()
