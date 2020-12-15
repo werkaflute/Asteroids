@@ -358,16 +358,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160240018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000021578}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 609426532}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 400.01013, y: 459}
-  m_SizeDelta: {x: 799.9796, y: 789.61224}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0.010131836, y: 426.9}
+  m_SizeDelta: {x: -0.020385742, y: 853.8062}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &160240020
 MonoBehaviour:
@@ -391,7 +391,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -402,7 +402,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Natalia Cyrklaff      Kacper Grau      Weronika Piotrowska
+  m_Text: "Natalia Cyrklaff      Kacper Grau      Weronika Piotrowska\n\nSpecial
+    thanks to Micha\u0142 Przekop for outstanding consults !!!\n"
 --- !u!222 &160240021
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -443,10 +444,10 @@ RectTransform:
   m_Father: {fileID: 609426532}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -427.01}
-  m_SizeDelta: {x: 800.00085, y: 853.6618}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.010009766}
+  m_SizeDelta: {x: 0.0008544922, y: 853.6618}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &604291549
 MonoBehaviour:
@@ -470,10 +471,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -594,16 +595,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689308094}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000055094}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00011386}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 609426532}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -238.11}
-  m_SizeDelta: {x: 800.00085, y: 475.86182}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -427.01}
+  m_SizeDelta: {x: 0.0008544922, y: 853.66187}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &689308096
 MonoBehaviour:
@@ -627,18 +628,20 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Thanks for Playing!
+  m_Text: 'Thanks for Playing!
+
+    Press ENTER to play again or ESC to quit'
 --- !u!222 &689308097
 CanvasRenderer:
   m_ObjectHideFlags: 0
